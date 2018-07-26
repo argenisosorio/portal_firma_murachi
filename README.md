@@ -1,0 +1,1 @@
+<h2>Portal sencillo que verificar la información de la firma electrónica que posee un documento en formato PDF usando el servicio Murachí de CEDNITEL.</h2>

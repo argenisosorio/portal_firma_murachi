@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html class="no-js"> 
+<head>
+  <meta charset="utf-8">
+  <title>Portal de Firma Electrónica</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Icon
+  ================================================== -->
+  <link rel="shortcut icon" href="static/images/logo.png" type="image/ico" />
+  <link rel="stylesheet" href="static/css/bootstrap.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <!-- DataTables - css/js
+  ================================================== -->
+  <link type="text/css" rel="stylesheet" href="static/css/datatable/buttons.dataTables.min.css" />
+  <link type="text/css" rel="stylesheet" href="static/css/datatable/jquery.dataTables.min.css" />
+  <script src="static/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="static/lib/w3.js"></script>
+  <!-- Plugins hwcrypto - js
+  ================================================== -->
+  <script type="text/javascript" src="static/js/hwcrypto/gitversion.js"></script>
+  <script type="text/javascript" src="static/js/hwcrypto/hwcrypto-legacy.js"></script>
+  <script type="text/javascript" src="static/js/hwcrypto/hwcrypto.js"></script>
+  <script type="text/javascript" src="static/js/hwcrypto/hex2base.js"></script>
+  <!-- Pdf plugins - js
+  ================================================== -->
+  <script src="static/js/pdf.js"></script>
+  <script src="static/js/pdf.worker.js"></script>
+  <!--DataTables - js
+  ================================================== -->
+  <script type="text/javascript" src="static/js/datatable/jquery-1.12.4.js"></script>
+  <script type="text/javascript" src="static/js/datatable/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="static/js/datatable/dataTables.bootstrap.min.js "></script>
+  <script type="text/javascript" src="static/js/datatable/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="static/js/datatable/jszip.min.js"></script>
+  <script type="text/javascript" src="static/js/datatable/buttons.print.min.js" ></script>
+  <script type="text/javascript" src="static/js/datatable/pdfmake.min.js " ></script>
+  <script type="text/javascript" src="static/js/datatable/vfs_fonts.js" ></script>
+  <script type="text/javascript" src="static/js/datatable/buttons.html5.min.js" ></script>
+  <script type="text/javascript" src="static/js/datatable/buttons.print.min.js" ></script>
+  <script type="text/javascript" src="static/js/datatable/buttons.colVis.min.js" ></script>
+</head>
+
+<body>
+
+<!-- Container class
+================================================== -->
+<div class="container">
+  <br />
+  <!-- Well class
+  ================================================== -->
+  <div class="well">
+    <div align="center">
+      <h3>Verificar documento PDF</h3>
+      <p>Verificar la información de la firma electrónica que posee un documento en formato PDF usando el servicio Murachí.</p>
+    </div>
+    <br />
+    <form id="Form-check-pdf" enctype='multipart/form-data' >
+      <input type="file" id="verificar-file-pdf" accept="application/pdf">
+      <br />
+      <div align="center">
+        <button type="submit" id="button_CheckPDF" class="btn btn-success">Verificar</button>
+      </div>
+    </form>
+    <br />
+    <table id="myCkeckPDF" class="display" cellspacing="0" width="100%"></table>
+    <br />
+    <div id="Dialogo_CheckPDF"></div>
+  </div>
+  <!-- End Well class -->
+</div>
+<!-- End Container class -->
+
+</body>
+
+<!-- Extra js (Visible)
+================================================== -->
+<script src="static/js/jquery.easing-1.3.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/plugins.js"></script>
+<script src="static/js/main.js"></script>
+<script src="static/js/draggable.js"></script>
+<script src="static/js/jquery/jquery-ui.js"></script> 
+<script src="static/js/constantes.js"></script>
+<script src="static/js/Respuestas.js"></script>
+<script src="static/js/services.js"></script>
+
+<!-- Firma PDF (Visible)
+================================================== -->
+<script src="static/js/FirmaPDF/Visible/myInfoDataTablePDF.js"></script>
+<script src="static/js/FirmaPDF/Visible/DraggableSortable.js"></script>
+<script src="static/js/FirmaPDF/Visible/FirmaVisible.js"></script>
+<script src="static/js/FirmaPDF/Visible/FirmarDocumentoPdf.js"></script>
+
+<!-- Firma PDF (No Visible)
+================================================== -->
+<script src="static/js/FirmaPDF/NoVisible/myInfoDataTablePDF_NoVisible.js"></script>
+<script src="static/js/FirmaPDF/NoVisible/FirmaNoVisiblePDF.js"></script>
+<script src="static/js/FirmaPDF/NoVisible/FirmaNoVisible.js"></script>
+
+<!-- Firma Multiples (PDF)
+================================================== -->
+<script src="static/js/FirmaMultiplesPDF/FirmaMultiples.js"></script>
+<script src="static/js/FirmaMultiplesPDF/myInfoDataTableCheckPDFMultiples.js"></script>
+
+<!-- Firma BDOC
+================================================== -->
+<script src="static/js/FirmaBDOC/myInfoDataTableSignBDOC.js"></script>
+<script src="static/js/FirmaBDOC/firmarDocumentoBDOC.js"></script> 
+
+<!-- Verificar sign PDF
+================================================== -->
+<script src="static/js/VerificarSign/myInfoDataTableCheckPDF.js"></script>
+<script src="static/js/VerificarSign/myInfoDataTableCheckBDOC.js"></script>
+<script src="static/js/VerificarSign/CheckSignPDFandBDOC.js"></script>
+
+</html>
