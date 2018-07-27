@@ -26,6 +26,12 @@ function SerealizeMyJsonPDFF(data){
   return data;
 }
 
+/*
+|----------------------------------------------------------------
+| Función que al parecer es la que consulta y valida el documento
+| subido al servidor de Murachí, aún faltan probar mas cosas.
+|----------------------------------------------------------------
+*/
 function VerificarDocumentServer(formDat, Extension){
   $.ajax({
     url: "https://murachi.cenditel.gob.ve/Murachi/0.1/archivos/firmados",
@@ -43,6 +49,7 @@ function VerificarDocumentServer(formDat, Extension){
           INFO_CHECK = SerealizeMyJsonPDFF(response);
           CONT_VERIFIC += 1;
           if (CONT_VERIFIC == 1){
+            // Si entra aquí cargará la tabla en el dom, esto para la verificación de documentos PDF.
             INFO_DATATABLE_VERIFICAR = DataTableVerificarPDF(response);
           }
           if (CONT_VERIFIC > 1){

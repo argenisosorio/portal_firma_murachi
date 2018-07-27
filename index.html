@@ -55,12 +55,15 @@
       <p>Verificar la información de la firma electrónica que posee un documento en formato PDF usando el servicio Murachí.</p>
     </div>
     <br />
-    <div id="MensajePDF"></div>
+    <div id="MensajePDF"></div><!-- div para retornar mensajes de las validaciones -->
     <form id="Form-check-pdf" enctype='multipart/form-data' >
-      <input type="file" id="verificar-file-pdf" accept="application/pdf">
-      <br />
-      <div align="center">
-        <button type="submit" id="button_CheckPDF" class="btn btn-success">Verificar</button>
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="file" id="verificar-file-pdf" accept="application/pdf">
+        </div>
+        <div class="col-sm-6">
+          <button type="submit" id="button_CheckPDF" class="btn btn-success">Verificar</button>
+        </div>
       </div>
     </form>
     <br />

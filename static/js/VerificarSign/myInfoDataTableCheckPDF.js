@@ -192,7 +192,6 @@ function DataTableVerificarPDF(response){
     },
     data: response.signatures,
     columns: columns,
-    dom: 'Bfrtip',
     columnDefs: [{
       // Columnas que no serán visibles en la tabla.
       "targets": [2,3,4,5,6,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23],
