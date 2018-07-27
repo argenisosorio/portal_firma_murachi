@@ -1,121 +1,122 @@
-
 function True_FalseVerifi(data){
-
-    if (data == "true" ){
-      return "Verdadero";
-    }
-    if (data ==  "false"){
-      return "Falso";
-    }
+  if (data == "true" ){
+    return "Verdadero";
+  }
+  if (data ==  "false"){
+    return "Falso";
+  }
 }
 
 function SerealizeMyJsonBDOC(data){
   for (var i = 0; i < data.signatures.length; i++) {
-      data.signatures[i].isValid = True_FalseVerifi(data.signatures[i].isValid);
-      data.signatures[i].signerCertificateIsValid = True_FalseVerifi(data.signatures[i].signerCertificateIsValid);
+    data.signatures[i].isValid = True_FalseVerifi(data.signatures[i].isValid);
+    data.signatures[i].signerCertificateIsValid = True_FalseVerifi(data.signatures[i].signerCertificateIsValid);
   }
   return data;
 }
 
 function SerealizeMyJsonPDFF(data){
   for (var i = 0; i < data.signatures.length; i++) {
-      data.signatures[i].integrityCheck = True_FalseVerifi(data.signatures[i].integrityCheck);
-      data.signatures[i].signerCertificateStillValid = True_FalseVerifi(data.signatures[i].signerCertificateStillValid);
-      data.signatures[i].signerCertificateValidAtTimeOfSigning = True_FalseVerifi(data.signatures[i].signerCertificateValidAtTimeOfSigning);
-      data.signatures[i].signatureCoversWholeDocument = True_FalseVerifi(data.signatures[i].signatureCoversWholeDocument);
-      data.signatures[i].certificatesVerifiedAgainstTheKeyStore = True_FalseVerifi(data.signatures[i].certificatesVerifiedAgainstTheKeyStore);         
+    data.signatures[i].integrityCheck = True_FalseVerifi(data.signatures[i].integrityCheck);
+    data.signatures[i].signerCertificateStillValid = True_FalseVerifi(data.signatures[i].signerCertificateStillValid);
+    data.signatures[i].signerCertificateValidAtTimeOfSigning = True_FalseVerifi(data.signatures[i].signerCertificateValidAtTimeOfSigning);
+    data.signatures[i].signatureCoversWholeDocument = True_FalseVerifi(data.signatures[i].signatureCoversWholeDocument);
+    data.signatures[i].certificatesVerifiedAgainstTheKeyStore = True_FalseVerifi(data.signatures[i].certificatesVerifiedAgainstTheKeyStore);     
   }
   return data;
 }
 
-
-function VerificarDocumentServer(formDat, Extension){         
-    $.ajax({
-        url: "https://murachi.cenditel.gob.ve/Murachi/0.1/archivos/firmados",
-        type: "post",
-        dataType: "json",
-        data: formDat,
-        cache: false,
-        contentType: false,
-    		processData: false,
-    		xhrFields: {withCredentials: true},
-    		headers: {"Authorization":"Basic YWRtaW46YWRtaW4="},
-    		success: function(response) {
-
-            if (response.signatures){
-                  if (Extension == "PDF") {
-          	            INFO_CHECK = SerealizeMyJsonPDFF(response);            	
-                				CONT_VERIFIC += 1;
-                				if (CONT_VERIFIC == 1){
-                					INFO_DATATABLE_VERIFICAR = DataTableVerificarPDF(response);
-                				}
-                				if (CONT_VERIFIC > 1){
-                					INFO_DATATABLE_VERIFICAR.destroy();
-                					INFO_DATATABLE_VERIFICAR = DataTableVerificarPDF(response);	
-                				}					            
-                  }
-                  else{
-                      $("div#MensajeBDOC").html("");
-                      INFO_CHECK_BDOC = SerealizeMyJsonBDOC(response);
-                      CONT_VERIFIC_BDOC += 1;
-                      if (CONT_VERIFIC_BDOC == 1){
-                          INFO_DATATABLE_VERIFICAR_BDOC = DataTableVerificarBDOC(response);
-                      }
-                      if (CONT_VERIFIC_BDOC > 1){
-                          INFO_DATATABLE_VERIFICAR_BDOC.destroy();
-                          INFO_DATATABLE_VERIFICAR_BDOC = DataTableVerificarBDOC(response); 
-                      }                                     
-                      
-                  }
-
-            }
-            else{
-                $("div#myCkeckBDOC_wrapper").hide();
-                $("div#myCkeckPDF_wrapper").hide();
-                if (Extension == "PDF") {
-                    if (response.error) {
-                        $("div#MensajePDF").html("<h1>Extensión no soportada, verifique el archivo que sea (.pdf).</h1>");
-                    }
-                    else{
-                        $("div#MensajePDF").html("<h1>No posee información de la firma electrónica.</h1>");
-                    }      
-                }
-                else{
-                    if (response.error) {
-                        $("div#MensajeBDOC").html("<h1>Extensión no soportada, verifique el archivo que sea (.bdoc).</h1>");
-                    }
-                    else{
-                        $("div#MensajeBDOC").html("<h1>No posee información de la firma electrónica.</h1>");
-                    }                        
-                }
-            }
-    	},
-     	error: function(response) {
-     		//Que se ejecuta cuando finalice la petición de con error
-			//$("#respuesta").html('Error, al subir el archivo al servidor...!!!');
-     		alert("ocurrio un error, al subir el archivo al servidor")
-		}
-    });
-
+function VerificarDocumentServer(formDat, Extension){
+  $.ajax({
+    url: "https://murachi.cenditel.gob.ve/Murachi/0.1/archivos/firmados",
+    type: "post",
+    dataType: "json",
+    data: formDat,
+    cache: false,
+    contentType: false,
+    processData: false,
+    xhrFields:{withCredentials: true},
+    headers:{"Authorization":"Basic YWRtaW46YWRtaW4="},
+    success: function(response){
+      if (response.signatures){
+        if (Extension == "PDF"){
+          INFO_CHECK = SerealizeMyJsonPDFF(response);
+          CONT_VERIFIC += 1;
+          if (CONT_VERIFIC == 1){
+            INFO_DATATABLE_VERIFICAR = DataTableVerificarPDF(response);
+          }
+          if (CONT_VERIFIC > 1){
+            INFO_DATATABLE_VERIFICAR.destroy();
+            INFO_DATATABLE_VERIFICAR = DataTableVerificarPDF(response);
+          }
+        }
+        else{
+          $("div#MensajeBDOC").html("");
+          INFO_CHECK_BDOC = SerealizeMyJsonBDOC(response);
+          CONT_VERIFIC_BDOC += 1;
+          if (CONT_VERIFIC_BDOC == 1){
+            INFO_DATATABLE_VERIFICAR_BDOC = DataTableVerificarBDOC(response);
+          }
+          if (CONT_VERIFIC_BDOC > 1){
+            INFO_DATATABLE_VERIFICAR_BDOC.destroy();
+            INFO_DATATABLE_VERIFICAR_BDOC = DataTableVerificarBDOC(response);
+          }
+        }
+      }
+      else{
+        $("div#myCkeckBDOC_wrapper").hide();
+        $("div#myCkeckPDF_wrapper").hide();
+        if (Extension == "PDF"){
+          if (response.error){
+            alert("xxx");
+            $("div#MensajePDF").html("<h1>Extensión no soportada, verifique el archivo que sea PDF</h1>");
+          }
+          else{
+            $("div#MensajePDF").html("<h1>No posee información de la firma electrónica.</h1>");
+          }    
+        }
+        else{
+          if (response.error){
+            $("div#MensajeBDOC").html("<h1>Extensión no soportada, verifique el archivo que sea (.bdoc).</h1>");
+          }
+          else{
+            $("div#MensajeBDOC").html("<h1>No posee información de la firma electrónica.</h1>");
+          }
+        }
+      }
+    },
+    error: function(response){
+      // Si no se pudo cargar el documento en el servidor de Murachí
+      // luego de ser enviado desde el formulario para hacer
+      // la verificación se mostrará este mensaje.
+      alert("Ocurrio un error, al subir el archivo al servidor")
+    }
+  });
 }
 
-
+/*
+|---------------------------------------------------------
+| Funciones que gestionan el envío de documentos desde el
+| formulario de verificación de documentos en formato PDF.
+|---------------------------------------------------------
+*/
 $("#Form-check-pdf").on('submit', function(event) {
-	event.preventDefault();
-
-	var formDat = new FormData(); 
-    formDat.append("upload", $("#verificar-file-pdf")[0].files[0]);	
-
-    if(['application/pdf'].indexOf($("#verificar-file-pdf").get(0).files[0].type) == 0) {
-        VerificarDocumentServer(formDat,"PDF");
-        //return;
-        $("div#MensajePDF").html("");
-    }
-    else{
-    	   $("div#MensajePDF").html("<h1>Extensión no soportada, verifique el archivo que sea (.pdf).</h1>");
-    }
+  event.preventDefault();
+  var formDat = new FormData();
+  formDat.append("upload", $("#verificar-file-pdf")[0].files[0]);
+  if(['application/pdf'].indexOf($("#verificar-file-pdf").get(0).files[0].type) == 0) {
+    VerificarDocumentServer(formDat,"PDF");
+    //return;
+    //$("div#MensajePDF").html("<h1>Verificación del documento exitosa.</h1>");
+    $("div#MensajePDF").html("");
+  }
+  else{
+    // Imprimir en el div el mensaje de extensión no soportada.
+    $("div#MensajePDF").html("<h1>Extensión no soportada, verifique que el documento tenga formato PDF.</h1>");
+  }
 });
 
+// Evento click on submit en el formulario.
 $("#Submit-Form-check-pdf").on('click', function() {
   $("#button_CheckPDF").trigger('click');
 });
@@ -130,27 +131,29 @@ $("#verificar-file-pdf").on('change', function() {
   $("#Submit-Form-check-pdf").attr("disabled","disabled"); 
 });
 
-
-
+/*
+|----------------------------------------------------------
+| Funciones que gestionan el envío de documentos desde el
+| formulario de verificación de documentos en formato BDOC.
+|----------------------------------------------------------
+*/
 $("#Form-check-BDOC").on('submit', function(event) {
   event.preventDefault();
-
   if ($("#verificar-file-BDOC")[0].files[0].name.slice(-4).toLowerCase() == "bdoc"){
-      var formDat = new FormData(); 
-      formDat.append("upload", $("#verificar-file-BDOC")[0].files[0]); 
-      VerificarDocumentServer(formDat,"BDOC")
+    var formDat = new FormData(); 
+    formDat.append("upload", $("#verificar-file-BDOC")[0].files[0]); 
+    VerificarDocumentServer(formDat,"BDOC")
   }
   else{
-      $("div#myCkeckBDOC_wrapper").hide();
-      $("div#MensajeBDOC").html("<h1>Extensión no soportada, verifique el archivo que sea (.bdoc).</h1>");
+    $("div#myCkeckBDOC_wrapper").hide();
+    $("div#MensajeBDOC").html("<h1>Extensión no soportada, verifique el archivo que sea (.bdoc).</h1>");
   }
-
 });
-
 
 $("#Submit-Form-check-BDOC").on('click', function() {
   $("#button_CheckBDOC").trigger('click');
 });
+
 $("#CheckSignBDOC").on('click', function() {
   $("#verificar-file-BDOC").trigger('click');
 });
