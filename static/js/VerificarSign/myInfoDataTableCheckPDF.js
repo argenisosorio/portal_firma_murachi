@@ -1,7 +1,7 @@
 function ColumnsDataTablePDF(){
   var columns = [
   {title: "Nombre del firmante", data: "nameOfTheSigner" },
-  {title: "Fecha en que se realiza la firma", data: "signedOn"},
+  {title: "Fecha en que se realizó la firma", data: "signedOn"},
   {title: "Chequea la integridad de la firma", data: "integrityCheck"},
   {title: "El certificado todavía está válido", data: "signerCertificateStillValid"},
   {title: "Fecha de inicio de validez del certificado", data: "signerCertificateValidFrom"},
@@ -10,7 +10,7 @@ function ColumnsDataTablePDF(){
   {title: "Tipo de firma de archivo PDF", data: "signatureType"},
   {title: "Estampilla de tiempo", data: "timeStamp"},
   {title: " Razón de la firma", data: "reason"},
-  {title: "Ubicación donde se realiza la firma", data: "location"},
+  {title: "Ubicación donde se realizó la firma", data: "location"},
   {title: "Nombre alternativo del firmante", data: "alternativeNameOfTheSigner"},
   {title: "La firma abarca todo el documento PDF", data: "signatureCoversWholeDocument"},
   {title: "Tipo de subfiltro: /adbe.pkcs7.sha1, /adbe.pkcs7.detached", data: "filterSubtype"},
@@ -24,7 +24,7 @@ function ColumnsDataTablePDF(){
   {title: "Información de contacto del firmante", data: "contactInfo", style:"width: 2px;"},
   {title: "Estampilla de tiempo verificada", data: "timeStampVerified"},
   {title: "Emisor del certificado firmante", data: "signerCertificateIssuer"},
-  {title:"Información", data: function(event) {return '<button id="informacion" type="input" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModalVerificar" onclick="javascript:Dialog_Verificar('+event.documentRevision+')">Info(<font color="red">'+event.documentRevision+'</font>)</button>';}}
+  {title:"Detalles", data: function(event) {return '<button id="informacion" type="input" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModalVerificar" onclick="javascript:Dialog_Verificar('+event.documentRevision+')">Info(<font color="red">'+event.documentRevision+'</font>)</button>';}}
   ];
   return columns;
 }
