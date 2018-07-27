@@ -68,7 +68,6 @@ function VerificarDocumentServer(formDat, Extension){
         $("div#myCkeckPDF_wrapper").hide();
         if (Extension == "PDF"){
           if (response.error){
-            alert("xxx");
             $("div#MensajePDF").html("<h1>Extensión no soportada, verifique el archivo que sea PDF</h1>");
           }
           else{
