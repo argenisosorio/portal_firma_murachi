@@ -24,7 +24,7 @@ function ColumnsDataTablePDF(){
   {title: "Información de contacto del firmante", data: "contactInfo", style:"width: 2px;"},
   {title: "Estampilla de tiempo verificada", data: "timeStampVerified"},
   {title: "Emisor del certificado firmante", data: "signerCertificateIssuer"},
-  {title:"Detalles", data: function(event) {return '<button id="informacion" type="input" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModalVerificar" onclick="javascript:Dialog_Verificar('+event.documentRevision+')">Info(<font color="red">'+event.documentRevision+'</font>)</button>';}}
+  {title:"Detalles", data: function(event) {return '<button id="informacion" type="input" class="btn btn-default" data-toggle="modal" data-target="#myModalVerificar" onclick="javascript:Dialog_Verificar('+event.documentRevision+')">Info('+event.documentRevision+')</button>';}}
   ];
   return columns;
 }
@@ -142,6 +142,12 @@ function InfoContentVerificar(id){
   }
 }
 
+/*
+|---------------------------------------------------------------
+| Función que construye la estructura html del modal que muestra
+| los detalles de la firma.
+|---------------------------------------------------------------
+*/
 function Dialog_Verificar(id){
   document.getElementById("Dialogo_CheckPDF").innerHTML = '\
   <style>\
