@@ -1,3 +1,9 @@
+/*
+|------------------------------------------------
+| Función que retorna los valores de las columnas
+| de la tabla de datatable.
+|------------------------------------------------
+*/
 function ColumnsDataTablePDF(){
   var columns = [
   {title: "Nombre del firmante", data: "nameOfTheSigner" },
