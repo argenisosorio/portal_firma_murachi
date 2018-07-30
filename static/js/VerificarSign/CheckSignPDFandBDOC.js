@@ -45,6 +45,7 @@ function VerificarDocumentServer(formDat, Extension){
     headers:{"Authorization":"Basic YWRtaW46YWRtaW4="},
     success: function(response){
       if (response.signatures){
+        // Si el formato que recibe la función es PDF entre aquí.
         if (Extension == "PDF"){
           INFO_CHECK = SerealizeMyJsonPDFF(response);
           CONT_VERIFIC += 1;
@@ -57,6 +58,7 @@ function VerificarDocumentServer(formDat, Extension){
             INFO_DATATABLE_VERIFICAR = DataTableVerificarPDF(response);
           }
         }
+        // Si el formato que recibe la función es BDOC entre aquí.
         else{
           $("div#MensajeBDOC").html("");
           INFO_CHECK_BDOC = SerealizeMyJsonBDOC(response);
@@ -75,7 +77,7 @@ function VerificarDocumentServer(formDat, Extension){
         $("div#myCkeckPDF_wrapper").hide();
         if (Extension == "PDF"){
           if (response.error){
-            $("div#MensajePDF").html("<h1>Extensión no soportada, verifique el archivo que sea PDF</h1>");
+            $("div#MensajePDF").html("<h1>Extensión no soportada, verifique el archivo que sea PDF.</h1>");
           }
           else{
             $("div#MensajePDF").html("<h1>No posee información de la firma electrónica.</h1>");
