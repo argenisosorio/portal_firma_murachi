@@ -27,10 +27,11 @@ function SerealizeMyJsonPDFF(data){
 }
 
 /*
-|----------------------------------------------------------------
-| Función que al parecer es la que consulta y valida el documento
-| subido al servidor de Murachí, aún faltan probar mas cosas.
-|----------------------------------------------------------------
+|------------------------------------------------------------
+| Primer paso, función que envía el documento al
+| servidor de Murachí, valida la extensión del archivo
+| y tambien que se haya cargado correctamente en el servidor.
+|------------------------------------------------------------
 */
 function VerificarDocumentServer(formDat, Extension){
   $.ajax({
