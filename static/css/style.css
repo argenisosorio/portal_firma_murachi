@@ -1,3 +1,9 @@
+body {
+  background: gray;
+}
+.well-content {
+  min-height: 400px;
+}
 #Contenido_Firma_Visible,
 #Contenido_Firma_No_Visible,
 #Contenido_FirmaBDOC,
