@@ -48,7 +48,7 @@
 <div class="container">
 
   <br />
-  
+
   <!-- jumbotron class
   ================================================== -->
   <div class="jumbotron">
@@ -64,22 +64,36 @@
   <!-- Well class
   ================================================== -->
   <div class="well">
-    <a href="index.html">Inicio</a>
+    <a href="index.html">Inicio</a> >
+    <a href="ver_firma_pdf.html">Verificar documento PDF</a>
   </div>
   <!-- End Well class -->
 
   <!-- Well class
   ================================================== -->
   <div class="well">
-    <div class="list-group">
-      <a href="ver_firma_pdf.html" class="list-group-item">
-        <h4 class="list-group-item-heading">Verificar documento PDF</h4>
-        <p class="list-group-item-text">Verificar la información de la firma electrónica de un documento en formato PDF.</p>
-      </a>
+    <div align="center">
+      <h3>Verificar documento PDF</h3>
+      <p>Verificar la información de la firma electrónica de un documento en formato PDF.</p>
     </div>
+    <hr />
+    <div id="MensajePDF"></div><!-- div para retornar mensajes de las validaciones -->
+    <form id="Form-check-pdf" enctype='multipart/form-data' >
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="file" id="verificar-file-pdf" accept="application/pdf">
+        </div>
+        <div class="col-sm-6">
+          <button type="submit" id="button_CheckPDF" class="btn btn-success">Verificar</button>
+        </div>
+      </div>
+    </form>
+    <br />
+    <table id="myCkeckPDF" class="display" cellspacing="0" width="100%"></table>
+    <br />
+    <div id="Dialogo_CheckPDF"></div>
   </div>
   <!-- End Well class -->
-
 </div>
 <!-- End Container class -->
 
