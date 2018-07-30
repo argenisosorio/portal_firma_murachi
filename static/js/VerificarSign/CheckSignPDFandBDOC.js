@@ -120,7 +120,7 @@ $("#Form-check-pdf").on('submit', function(event) {
   }
   else{
     // Imprimir en el div el mensaje de extensión no soportada.
-    $("div#MensajePDF").html("<h1>Extensión no soportada, verifique que el documento tenga formato PDF.</h1>");
+    $("div#MensajePDF").html("<h1>Error, parece que el archivo que está intentando verificar no tiene extensión de archivo PDF.</h1>");
   }
 });
 
@@ -154,7 +154,7 @@ $("#Form-check-BDOC").on('submit', function(event) {
   }
   else{
     $("div#myCkeckBDOC_wrapper").hide();
-    $("div#MensajeBDOC").html("<h1>Extensión no soportada, verifique el archivo que sea (.bdoc).</h1>");
+    $("div#MensajeBDOC").html("<h1>Error, parece que el archivo que está intentando verificar no tiene extensión de archivo BDOC.</h1>");
   }
 });
 
