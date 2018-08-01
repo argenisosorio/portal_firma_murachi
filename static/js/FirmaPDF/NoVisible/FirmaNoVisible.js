@@ -79,7 +79,7 @@ $("#pdf-next3").on('click', function() {
 
 $("#Cargar_file_No_Visible").on('click', function() {
   $("#pdf-main-container").hide();
-  $("#pdf-main-container2").show();  
+  $("#pdf-main-container2").show();
   $("#myJsonPDF_NO_VISIBLE_wrapper").hide();
   CONTAINER2 = true;
   $("#file-to-normal").trigger('click');

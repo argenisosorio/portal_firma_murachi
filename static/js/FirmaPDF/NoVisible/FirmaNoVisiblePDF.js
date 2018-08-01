@@ -128,9 +128,9 @@ function ObtenerCertificadoFirmanteNoVisible(response){
   var fileId = response.fileId.toString();
   var cert;
   window.hwcrypto.getCertificate({lang: "en"}).then(
-    function(response) {
-        var cert = response;
-        var parameters = "";
+    function(response){
+      var cert = response;
+      var parameters = "";
       parameters = JSON.stringify({
         "fileId":fileId,
         "certificate":cert.hex,
@@ -141,7 +141,7 @@ function ObtenerCertificadoFirmanteNoVisible(response){
         "signaturePage": "",
         "xPos": "",
         "yPos": ""
-        });
+      });
       // ahora llamar al ajax de obtener la resena del pdf
       ObtenerHashPDFServerNoVisible(parameters, cert);
     },
@@ -153,11 +153,13 @@ function ObtenerCertificadoFirmanteNoVisible(response){
         error = "El usuario cancelo la operación";
       }
       else if(err == "Error: no_certificates"){
+        // Alerta que se muestra cuando no pudo obtener información del certificado.
         alert("getCertificate() failed: No hay certificado disponible");
         error = "No hay certificado disponible";
       }
       else if(err == "Error: no_implementation") {
         alert("getCertificate() failed: No hay soporte para el manejo del certificado");
+        // Error que se imprime en #respuesta_NoVisible del template.
         error = "No hay soporte para el manejo del certificado";
       }
       //alert("getCertificate() failed: " + err);
