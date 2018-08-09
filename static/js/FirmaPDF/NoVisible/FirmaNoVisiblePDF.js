@@ -160,7 +160,7 @@ function ObtenerCertificadoFirmanteNoVisible(response){
       else if(err == "Error: no_implementation") {
         alert("getCertificate() failed: No hay soporte para el manejo del certificado");
         // Error que se imprime en #respuesta_NoVisible del template.
-        error = "No hay soporte para el manejo del certificado";
+        error = "<h1>No hay soporte para el manejo del certificado</h1>";
       }
       //alert("getCertificate() failed: " + err);
       $("#respuesta_NoVisible").html("getCertificate() failed: " + error);
